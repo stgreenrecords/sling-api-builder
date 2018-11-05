@@ -5,13 +5,6 @@ import org.osgi.framework.ServiceReference;
 
 public class ServletProperties {
 
-    private static final String PROPERTY_MODEL = "Model";
-    private static final String PROPERTY_SERVICE = "Service";
-    private static final String PROPERTY_PATH_TO_RESOURCES = "Path to resource";
-    private static final String PROPERTY_JCR_PRIMARY_TYPE = "Jcr primary type";
-    private static final String PROPERTY_CUSTOM_PROPERTY_NAME = "Custom property name";
-    private static final String PROPERTY_CUSTOM_PROPERTY_Value = "Custom property value";
-
     private Class<?> modelClass;
     private ServiceReference serviceClass;
     private String pathToResources;
