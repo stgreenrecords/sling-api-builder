@@ -2,16 +2,20 @@ package com.sling.api.builder.samples.restfields;
 
 import com.sling.api.builder.samples.annotations.RestField;
 import com.sling.api.builder.samples.beans.ServletProperties;
+import com.sling.api.builder.samples.utils.RestResourceUtil;
 import com.sling.api.builder.samples.utils.ServletMappingStorage;
 import com.sling.api.builder.samples.utils.SlingModelUtil;
-import com.sling.api.builder.samples.utils.RestResourceUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.felix.scr.annotations.*;
+import org.apache.felix.scr.annotations.Activate;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Modified;
+import org.apache.felix.scr.annotations.Service;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.osgi.service.component.ComponentContext;
 
 import javax.jcr.query.Query;
-import java.util.*;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -27,18 +31,17 @@ public class AbstractResFieldCore implements RestFieldCore {
     protected void activate(ComponentContext componentContext) {
         Optional.ofNullable(this.getClass().getAnnotation(RestField.class))
                 .filter(restField -> StringUtils.isNotEmpty(restField.servletExtension()))
-                .ifPresent(restField -> {
-                    ServletMappingStorage.getServletsStorage().
-                            put(restField.servletExtension(),
-                                    new ServletProperties(
-                                            restField.modelClass(),
-                                            componentContext.getServiceReference(),
-                                            restField.pathToResources(),
-                                            restField.jcrPrimaryType(),
-                                            restField.customPropertyName(),
-                                            restField.customPropertyValue(),
-                                            componentContext.getBundleContext()));
-                });
+                .ifPresent(restField -> ServletMappingStorage.getServletsStorage().
+                        put(restField.servletExtension(),
+                                new ServletProperties(
+                                        restField.modelClass(),
+                                        componentContext.getServiceReference(),
+                                        restField.pathToResources(),
+                                        restField.jcrPrimaryType(),
+                                        restField.customPropertyName(),
+                                        restField.customPropertyValue(),
+                                        componentContext.getBundleContext()))
+                );
     }
 
     @Override
@@ -76,7 +79,7 @@ public class AbstractResFieldCore implements RestFieldCore {
         return null;
     }
 
-    private String formatDefaultQuery(ServletProperties servletProperties){
+    private String formatDefaultQuery(ServletProperties servletProperties) {
         return String.format(DEFAULT_GET_QUERY,
                 servletProperties.getJcrPrimaryType(),
                 servletProperties.getPathToResources(),
@@ -92,8 +95,6 @@ public class AbstractResFieldCore implements RestFieldCore {
         SlingModelUtil.updateModel(model);
         return model;
     }
-
-
 
 
 }

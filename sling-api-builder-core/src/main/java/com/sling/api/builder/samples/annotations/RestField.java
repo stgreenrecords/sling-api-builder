@@ -7,10 +7,15 @@ import java.lang.annotation.RetentionPolicy;
 public @interface RestField {
 
     String servletExtension();
+
     Class modelClass();
+
     String pathToResources();
+
     String jcrPrimaryType() default "nt:unstructured";
+
     String customPropertyName() default "";
+
     String customPropertyValue() default "";
 
 }

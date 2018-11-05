@@ -19,15 +19,16 @@ public final class OsgiReflectionUtil {
 
     /**
      * Get service with this class using provided class loader
-     * @param loader {@link ClassLoader}
-     * @param serviceName service name which is looking for
-     * @param logger logging action
-     * @param generator generator for new service from existing class
+     *
+     * @param loader           {@link ClassLoader}
+     * @param serviceName      service name which is looking for
+     * @param logger           logging action
+     * @param generator        generator for new service from existing class
      * @param injectedServices injected services into current one
      * @return pair of service class and service instance (null if not service found)
      */
     public static Pair<Class<?>, Object> getServiceInfo(ClassLoader loader, String serviceName, Consumer<Exception> logger,
-                                                        Function<Class<?>, Object> generator, Pair<String, Object> ... injectedServices) {
+                                                        Function<Class<?>, Object> generator, Pair<String, Object>... injectedServices) {
         try {
             final Class<?> serviceClass = loader.loadClass(serviceName);
             if (ArrayUtils.isEmpty(injectedServices)) {
@@ -43,23 +44,25 @@ public final class OsgiReflectionUtil {
 
     /**
      * Get service with this class using provided class loader
-     * @param loader {@link ClassLoader}
-     * @param serviceName service name which is looking for
-     * @param logger logging action
+     *
+     * @param loader           {@link ClassLoader}
+     * @param serviceName      service name which is looking for
+     * @param logger           logging action
      * @param injectedServices injected services into current one
      * @return pair of service class and service instance (null if not service found)
      */
     public static Pair<Class<?>, Object> getServiceInfo(ClassLoader loader, String serviceName, Consumer<Exception> logger,
-                                                        Pair<String, Object> ... injectedServices) {
+                                                        Pair<String, Object>... injectedServices) {
         return getServiceInfo(loader, serviceName, logger, createNewService(logger), injectedServices);
     }
 
     /**
      * Get service with this class using provided class loader
-     * @param loader {@link ClassLoader}
+     *
+     * @param loader      {@link ClassLoader}
      * @param serviceName service name which is looking for
-     * @param logger logging action
-     * @param generator generator for new service from existing class
+     * @param logger      logging action
+     * @param generator   generator for new service from existing class
      * @return pair of service class and service instance (null if not service found)
      */
     public static Pair<Class<?>, Object> getServiceInfo(ClassLoader loader, String serviceName, Consumer<Exception> logger,
@@ -69,9 +72,10 @@ public final class OsgiReflectionUtil {
 
     /**
      * Get service with this class using provided class loader
-     * @param loader {@link ClassLoader}
+     *
+     * @param loader      {@link ClassLoader}
      * @param serviceName service name which is looking for
-     * @param logger logging action
+     * @param logger      logging action
      * @return pair of service class and service instance (null if not service found)
      */
     public static Pair<Class<?>, Object> getServiceInfo(ClassLoader loader, String serviceName, Consumer<Exception> logger) {
@@ -80,13 +84,14 @@ public final class OsgiReflectionUtil {
 
     /**
      * Generator for service. Create new instance with initialized services
-     * @param logger logging action
-     * @param generator generator for new service from existing class
+     *
+     * @param logger           logging action
+     * @param generator        generator for new service from existing class
      * @param injectedServices pairs of injected services (field name and service object)
      * @return generation function
      */
     private static Function<Class<?>, Object> createServiceWithInitializedServices(Consumer<Exception> logger, Function<Class<?>, Object> generator,
-                                                                                   Pair<String, Object> ... injectedServices) {
+                                                                                   Pair<String, Object>... injectedServices) {
         return serviceClass -> {
             Object service = generator.apply(serviceClass);
             try {
@@ -100,11 +105,12 @@ public final class OsgiReflectionUtil {
 
     /**
      * Generator for service. Create new instance with initialized services
-     * @param logger logging action
+     *
+     * @param logger           logging action
      * @param injectedServices pairs of injected services (field name and service object)
      * @return generation function
      */
-    private static Function<Class<?>, Object> createServiceWithInitializedServices(Consumer<Exception> logger, Pair<String, Object> ... injectedServices) {
+    private static Function<Class<?>, Object> createServiceWithInitializedServices(Consumer<Exception> logger, Pair<String, Object>... injectedServices) {
         return createServiceWithInitializedServices(logger, createNewService(logger), injectedServices);
     }
 
@@ -132,18 +138,19 @@ public final class OsgiReflectionUtil {
 
     /**
      * Invoke method using reflection
-     * @param serviceInfo class and service instance
-     * @param methodName method name
-     * @param logger logger function
+     *
+     * @param serviceInfo      class and service instance
+     * @param methodName       method name
+     * @param logger           logger function
      * @param methodParameters method parameters
      * @return result of method invocation
      */
     public static Object invokeMethod(Pair<Class<?>, Object> serviceInfo, String methodName, Consumer<Exception> logger,
-                                      MethodParameter ... methodParameters) {
+                                      MethodParameter... methodParameters) {
         final Class<?>[] classes = parametersToClasses(methodParameters);
         final Object[] args = parametersToArgs(methodParameters);
         try {
-            final Method method = serviceInfo.getKey().getMethod(methodName,classes);
+            final Method method = serviceInfo.getKey().getMethod(methodName, classes);
             return invokeMethodWithAccessor(serviceInfo.getValue(), method, logger, args);
         } catch (NoSuchMethodException e) {
             return invokeMethodFromDeclaredMethods(serviceInfo, methodName, logger, classes, args);
@@ -152,14 +159,15 @@ public final class OsgiReflectionUtil {
 
     /**
      * Invoke method using reflection
-     * @param serviceInfo class and service instance
-     * @param methodName method name
-     * @param logger logger function
+     *
+     * @param serviceInfo      class and service instance
+     * @param methodName       method name
+     * @param logger           logger function
      * @param methodParameters method parameters
      * @return result of method invocation
      */
     public static <T> T invokeMethod(Pair<Class<?>, Object> serviceInfo, String methodName, Consumer<Exception> logger,
-                                     Class<T> resultClass, MethodParameter ... methodParameters) {
+                                     Class<T> resultClass, MethodParameter... methodParameters) {
         return resultClass.cast(invokeMethod(serviceInfo, methodName, logger, methodParameters));
     }
 
@@ -173,7 +181,7 @@ public final class OsgiReflectionUtil {
                 .orElse(null);
     }
 
-    private static Object invokeMethodWithAccessor(Object service, Method method, Consumer<Exception> logger, Object ... args) {
+    private static Object invokeMethodWithAccessor(Object service, Method method, Consumer<Exception> logger, Object... args) {
         final boolean accessible = method.isAccessible();
         method.setAccessible(true);
         try {
@@ -217,7 +225,7 @@ public final class OsgiReflectionUtil {
             this(parameter, (Class<T>) parameter.getClass());
         }
 
-        public static <V> MethodParameter[] of(V ... values) {
+        public static <V> MethodParameter[] of(V... values) {
             return Stream.of(values)
                     .toArray(MethodParameter[]::new);
         }

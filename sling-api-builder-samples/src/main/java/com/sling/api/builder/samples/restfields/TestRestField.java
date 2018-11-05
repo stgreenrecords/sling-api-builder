@@ -13,7 +13,7 @@ import org.osgi.service.component.ComponentContext;
 @Component(immediate = true, label = "Test Rest Field Core", metatype = true)
 @Service(TestRestField.class)
 @RestField(servletExtension = "test", modelClass = TestModel.class, pathToResources = "/api-builder-demo", customPropertyName = "testProperty", customPropertyValue = "testValue")
-public class TestRestField extends AbstractResFieldCore{
+public class TestRestField extends AbstractResFieldCore {
 
     @Override
     @Modified

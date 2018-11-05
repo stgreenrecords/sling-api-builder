@@ -1,6 +1,5 @@
 package com.sling.api.builder.samples;
 
-import com.sling.api.builder.samples.beans.ServletProperties;
 import com.sling.api.builder.samples.restfields.RestFieldCore;
 import com.sling.api.builder.samples.utils.Constants;
 import com.sling.api.builder.samples.utils.RestResourceUtil;
@@ -54,9 +53,9 @@ public class MainRestServlet extends SlingAllMethodsServlet {
     }
 
     private RestFieldCore processRequest(SlingHttpServletRequest request) {
-        return  Optional.ofNullable(ServletMappingStorage.getPropertiesFromRequest(request)).
+        return Optional.ofNullable(ServletMappingStorage.getPropertiesFromRequest(request)).
                 map(properties ->
-                    (RestFieldCore) properties.getBundleContext().getService(properties.getServiceClass())
+                        (RestFieldCore) properties.getBundleContext().getService(properties.getServiceClass())
                 ).orElse(null);
     }
 

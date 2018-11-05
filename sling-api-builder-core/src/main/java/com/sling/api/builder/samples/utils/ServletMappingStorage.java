@@ -19,7 +19,7 @@ public class ServletMappingStorage {
     }
 
 
-    public static ServletProperties getPropertiesFromRequest(final SlingHttpServletRequest request){
+    public static ServletProperties getPropertiesFromRequest(final SlingHttpServletRequest request) {
         return SERVLETS_STORAGE.get(request.getRequestPathInfo().getExtension());
     }
 
