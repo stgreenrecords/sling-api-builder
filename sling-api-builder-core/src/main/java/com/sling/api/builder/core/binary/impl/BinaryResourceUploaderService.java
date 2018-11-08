@@ -1,7 +1,7 @@
-package com.sling.api.builder.samples.binary.impl;
+package com.sling.api.builder.core.binary.impl;
 
-import com.sling.api.builder.samples.binary.BinaryUploaderService;
-import com.sling.api.builder.samples.utils.RestResourceUtil;
+import com.sling.api.builder.core.binary.BinaryUploaderService;
+import com.sling.api.builder.core.utils.RestResourceUtil;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.jackrabbit.JcrConstants;

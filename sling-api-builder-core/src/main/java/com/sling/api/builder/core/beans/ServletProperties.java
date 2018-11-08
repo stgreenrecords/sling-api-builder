@@ -1,4 +1,4 @@
-package com.sling.api.builder.samples.beans;
+package com.sling.api.builder.core.beans;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;

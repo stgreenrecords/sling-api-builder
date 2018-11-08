@@ -1,14 +1,15 @@
-package com.sling.api.builder.samples;
+package com.sling.api.builder.core;
 
-import com.sling.api.builder.samples.restfields.RestFieldCore;
-import com.sling.api.builder.samples.utils.Constants;
-import com.sling.api.builder.samples.utils.RestResourceUtil;
-import com.sling.api.builder.samples.utils.ServletMappingStorage;
+import com.sling.api.builder.core.restfields.RestFieldCore;
+import com.sling.api.builder.core.utils.Constants;
+import com.sling.api.builder.core.utils.RestResourceUtil;
+import com.sling.api.builder.core.utils.ServletMappingStorage;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.felix.scr.annotations.sling.SlingServlet;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.osgi.framework.BundleContext;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
@@ -53,10 +54,12 @@ public class MainRestServlet extends SlingAllMethodsServlet {
     }
 
     private RestFieldCore processRequest(SlingHttpServletRequest request) {
-        return Optional.ofNullable(ServletMappingStorage.getPropertiesFromRequest(request)).
-                map(properties ->
-                        (RestFieldCore) properties.getBundleContext().getService(properties.getServiceClass())
-                ).orElse(null);
+        return Optional.ofNullable(ServletMappingStorage.getPropertiesFromRequest(request))
+                .map(properties -> {
+                    BundleContext bundleContext = properties.getBundleContext();
+                    return  (RestFieldCore) bundleContext.getService(properties.getServiceClass());
+                })
+                .orElse(null);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.sling.api.builder.samples.utils;
+package com.sling.api.builder.core.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

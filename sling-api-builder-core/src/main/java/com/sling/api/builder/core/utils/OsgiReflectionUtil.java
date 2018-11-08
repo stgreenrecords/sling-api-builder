@@ -1,4 +1,4 @@
-package com.sling.api.builder.samples.utils;
+package com.sling.api.builder.core.utils;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.Pair;

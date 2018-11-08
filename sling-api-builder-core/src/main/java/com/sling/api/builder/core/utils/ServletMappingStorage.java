@@ -1,7 +1,7 @@
-package com.sling.api.builder.samples.utils;
+package com.sling.api.builder.core.utils;
 
 
-import com.sling.api.builder.samples.beans.ServletProperties;
+import com.sling.api.builder.core.beans.ServletProperties;
 import org.apache.sling.api.SlingHttpServletRequest;
 
 import java.util.HashMap;

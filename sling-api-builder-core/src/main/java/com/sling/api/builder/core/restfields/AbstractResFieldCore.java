@@ -1,10 +1,10 @@
-package com.sling.api.builder.samples.restfields;
+package com.sling.api.builder.core.restfields;
 
-import com.sling.api.builder.samples.annotations.RestField;
-import com.sling.api.builder.samples.beans.ServletProperties;
-import com.sling.api.builder.samples.utils.RestResourceUtil;
-import com.sling.api.builder.samples.utils.ServletMappingStorage;
-import com.sling.api.builder.samples.utils.SlingModelUtil;
+import com.sling.api.builder.core.annotations.RestField;
+import com.sling.api.builder.core.beans.ServletProperties;
+import com.sling.api.builder.core.utils.RestResourceUtil;
+import com.sling.api.builder.core.utils.ServletMappingStorage;
+import com.sling.api.builder.core.utils.SlingModelUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.felix.scr.annotations.Activate;
 import org.apache.felix.scr.annotations.Component;
@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component(immediate = true, label = "Abstract Res Field Core", metatype = true)
-@Service(AbstractResFieldCore.class)
+@Service(RestFieldCore.class)
 @RestField(servletExtension = "", modelClass = Object.class, pathToResources = "/content")
-public class AbstractResFieldCore implements RestFieldCore {
+public abstract class AbstractResFieldCore implements RestFieldCore {
 
     private static final String DEFAULT_GET_QUERY = "SELECT * FROM [%s] AS resource WHERE ISDESCENDANTNODE([%s]) AND resource.[%s] = '%s'";
 

@@ -1,4 +1,4 @@
-package com.sling.api.builder.samples.binary.impl;
+package com.sling.api.builder.core.binary.impl;
 
 import org.apache.sling.api.request.RequestParameter;
 import org.slf4j.Logger;

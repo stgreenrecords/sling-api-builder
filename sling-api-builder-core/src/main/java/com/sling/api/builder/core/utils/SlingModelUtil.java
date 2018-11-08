@@ -1,6 +1,6 @@
-package com.sling.api.builder.samples.utils;
+package com.sling.api.builder.core.utils;
 
-import com.sling.api.builder.samples.resolver.ResolverProvider;
+import com.sling.api.builder.core.resolver.ResolverProvider;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jackrabbit.api.security.user.User;
 import org.apache.jackrabbit.api.security.user.UserManager;

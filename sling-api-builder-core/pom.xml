@@ -96,9 +96,9 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Sling-Model-Packages>com.sling.api.builder.samples.models</Sling-Model-Packages>
+                        <Sling-Model-Packages>com.sling.api.builder.core.models</Sling-Model-Packages>
                         <Export-Package>
-                            com.sling.api.builder.samples.*;
+                            com.sling.api.builder.core.*;
                         </Export-Package>
                         <Import-Package>
                             *;resolution:=optional

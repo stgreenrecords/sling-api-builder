@@ -1,4 +1,4 @@
-package com.sling.api.builder.samples.binary.impl;
+package com.sling.api.builder.core.binary.impl;
 
 public enum Type {
     AVATAR("avatar", "avatar", true),

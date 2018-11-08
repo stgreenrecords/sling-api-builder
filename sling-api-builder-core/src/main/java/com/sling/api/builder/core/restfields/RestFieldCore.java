@@ -1,6 +1,6 @@
-package com.sling.api.builder.samples.restfields;
+package com.sling.api.builder.core.restfields;
 
-import com.sling.api.builder.samples.utils.Constants;
+import com.sling.api.builder.core.utils.Constants;
 import org.apache.sling.api.SlingHttpServletRequest;
 
 import java.util.Optional;

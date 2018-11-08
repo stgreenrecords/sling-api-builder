@@ -1,4 +1,4 @@
-package com.sling.api.builder.samples.binary.impl;
+package com.sling.api.builder.core.binary.impl;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,9 +1,9 @@
-package com.sling.api.builder.samples.utils;
+package com.sling.api.builder.core.utils;
 
 import com.google.common.collect.ImmutableList;
-import com.sling.api.builder.samples.binary.impl.BinaryFile;
-import com.sling.api.builder.samples.binary.impl.BinaryFileFactory;
-import com.sling.api.builder.samples.binary.impl.Type;
+import com.sling.api.builder.core.binary.impl.BinaryFile;
+import com.sling.api.builder.core.binary.impl.BinaryFileFactory;
+import com.sling.api.builder.core.binary.impl.Type;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.request.RequestParameter;

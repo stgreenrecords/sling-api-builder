@@ -1,4 +1,4 @@
-package com.sling.api.builder.samples.resolver;
+package com.sling.api.builder.core.resolver;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.felix.scr.annotations.*;

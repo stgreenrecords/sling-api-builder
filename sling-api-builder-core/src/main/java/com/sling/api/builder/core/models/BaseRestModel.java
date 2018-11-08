@@ -1,7 +1,7 @@
-package com.sling.api.builder.samples.models;
+package com.sling.api.builder.core.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sling.api.builder.samples.utils.RestResourceUtil;
+import com.sling.api.builder.core.utils.RestResourceUtil;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;

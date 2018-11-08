@@ -1,4 +1,4 @@
-package com.sling.api.builder.samples.annotations;
+package com.sling.api.builder.core.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

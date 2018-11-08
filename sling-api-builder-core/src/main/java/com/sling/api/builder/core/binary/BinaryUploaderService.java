@@ -1,7 +1,7 @@
-package com.sling.api.builder.samples.binary;
+package com.sling.api.builder.core.binary;
 
-import com.sling.api.builder.samples.binary.impl.BinaryFile;
-import com.sling.api.builder.samples.binary.impl.Type;
+import com.sling.api.builder.core.binary.impl.BinaryFile;
+import com.sling.api.builder.core.binary.impl.Type;
 import org.apache.sling.api.resource.ResourceResolver;
 
 import java.util.List;

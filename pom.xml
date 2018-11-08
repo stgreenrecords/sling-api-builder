@@ -31,7 +31,7 @@
     <modules>
         <module>sling-api-builder-core</module>
         <module>sling-api-builder-samples</module>
-        <module>sling-api-builder-sample-content</module>
+
     </modules>
 
     <dependencyManagement>
