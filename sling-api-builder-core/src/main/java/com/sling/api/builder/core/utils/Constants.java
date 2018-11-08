@@ -22,13 +22,13 @@ public class Constants {
 
     public static final String STATUS_REGISTRATION_FAIL = "Что-то пошло не так. Попробуйте загерестрироваться позже или упритесь в стену.";
 
-    public static final String AUTH_COOKIE_NAME = "wedding-session-id";
+    public static final String AUTH_COOKIE_NAME = "api-builder-session-id";
 
-    public static final String EMAIL_COOKIE_NAME = "wedding-user";
+    public static final String EMAIL_COOKIE_NAME = "api-builder-user";
 
     public static final int LOGIN_COOKIE_AGE = 60 * 60 * 24 * 60;
 
-    public static final String CATALOG_ROOT_PAGE_PATH = "/content/wedding/catalog";
+    public static final String CATALOG_ROOT_PAGE_PATH = "/content/api-builder/catalog";
 
-    static final String USER_QUERY = "SELECT * FROM [nt:base] AS user WHERE ISDESCENDANTNODE([/home/users/wedding/users]) AND NAME() = 'profile' AND user.[userId] = '%s'";
+    static final String USER_QUERY = "SELECT * FROM [nt:base] AS user WHERE ISDESCENDANTNODE([/home/users/api-builder/users]) AND NAME() = 'profile' AND user.[userId] = '%s'";
 }

@@ -7,7 +7,7 @@
 
     <groupId>com.sling.api-builder</groupId>
     <artifactId>api-builder</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>${project.groupId} - ${project.artifactId}</name>
@@ -31,6 +31,7 @@
     <modules>
         <module>sling-api-builder-core</module>
         <module>sling-api-builder-samples</module>
+        <module>sling-api-builder-sample-content</module>
     </modules>
 
     <dependencyManagement>

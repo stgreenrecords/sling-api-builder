@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.sling.api-builder</groupId>
         <artifactId>api-builder</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <properties>
@@ -172,7 +172,7 @@
                     <filterSource>${basedir}/META-INF/vault/filter.xml</filterSource>
                     <verbose>true</verbose>
                     <failOnError>true</failOnError>
-                    <group>wedding</group>
+                    <group>sling-api-builder</group>
                     <embeddeds>
                         <embedded>
                             <groupId>com.sling.api-builder</groupId>
