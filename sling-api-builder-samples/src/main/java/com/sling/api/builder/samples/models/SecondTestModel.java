@@ -12,7 +12,7 @@ public class SecondTestModel {
     private String pathToProduct;
 
     @ValueMapValue
-    private Long amountOfProducts;
+    private String color;
 
     public String getPathToProduct() {
         return pathToProduct;
@@ -22,11 +22,12 @@ public class SecondTestModel {
         this.pathToProduct = pathToProduct;
     }
 
-    public Long getAmountOfProducts() {
-        return amountOfProducts;
+    public String getColor() {
+        return color;
     }
 
-    public void setAmountOfProducts(Long amountOfProducts) {
-        this.amountOfProducts = amountOfProducts;
+    public void setColor(String color) {
+        this.color = color;
     }
+
 }
