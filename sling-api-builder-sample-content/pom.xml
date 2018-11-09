@@ -205,7 +205,7 @@
     <!-- ====================================================================== -->
     <profiles>
         <profile>
-            <id>publish-production</id>
+            <id>build</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>

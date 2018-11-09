@@ -84,7 +84,7 @@
         <dependency>
             <groupId>com.sling.api-builder</groupId>
             <artifactId>com.sling.api-builder.core</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
