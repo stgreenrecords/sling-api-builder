@@ -9,17 +9,17 @@ public class ServletProperties {
     private ServiceReference serviceClass;
     private String pathToResources;
     private String jcrPrimaryType;
-    private String customPropertyName;
-    private String customPropertyValue;
+    private String searchPropertyName;
+    private String searchPropertyValue;
     private BundleContext bundleContext;
 
-    public ServletProperties(Class<?> modelClass, ServiceReference serviceClass, String pathToResources, String jcrPrimaryType, String customPropertyName, String customPropertyValue, BundleContext bundleContext) {
+    public ServletProperties(Class<?> modelClass, ServiceReference serviceClass, String pathToResources, String jcrPrimaryType, String searchPropertyName, String searchPropertyValue, BundleContext bundleContext) {
         this.modelClass = modelClass;
         this.serviceClass = serviceClass;
         this.pathToResources = pathToResources;
         this.jcrPrimaryType = jcrPrimaryType;
-        this.customPropertyName = customPropertyName;
-        this.customPropertyValue = customPropertyValue;
+        this.searchPropertyName = searchPropertyName;
+        this.searchPropertyValue = searchPropertyValue;
         this.bundleContext = bundleContext;
     }
 
@@ -55,20 +55,20 @@ public class ServletProperties {
         this.jcrPrimaryType = jcrPrimaryType;
     }
 
-    public String getCustomPropertyName() {
-        return customPropertyName;
+    public String getSearchPropertyName() {
+        return searchPropertyName;
     }
 
-    public void setCustomPropertyName(String customPropertyName) {
-        this.customPropertyName = customPropertyName;
+    public void setSearchPropertyName(String searchPropertyName) {
+        this.searchPropertyName = searchPropertyName;
     }
 
-    public String getCustomPropertyValue() {
-        return customPropertyValue;
+    public String getSearchPropertyValue() {
+        return searchPropertyValue;
     }
 
-    public void setCustomPropertyValue(String customPropertyValue) {
-        this.customPropertyValue = customPropertyValue;
+    public void setSearchPropertyValue(String searchPropertyValue) {
+        this.searchPropertyValue = searchPropertyValue;
     }
 
     public BundleContext getBundleContext() {

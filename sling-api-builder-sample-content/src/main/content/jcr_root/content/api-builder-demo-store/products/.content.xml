@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured">
+    <apple
+            jcr:primaryType="nt:unstructured"
+            brand="Apple"
+            model="X22"
+            color="RED"
+            restFieldType="product"/>
+    <samsyng
+            jcr:primaryType="nt:unstructured"
+            brand="Samsyng"
+            model="X23"
+            color="White"
+            restFieldType="product"/>
+    <huawei
+            jcr:primaryType="nt:unstructured"
+            brand="Huawei"
+            model="X24"
+            color="Black"
+            restFieldType="product"/>
+    <sony
+            jcr:primaryType="nt:unstructured"
+            brand="Sony"
+            model="X20"
+            color="Purple"
+            restFieldType="product"/>
+    <google
+            jcr:primaryType="nt:unstructured"
+            brand="Goolgle"
+            model="X12"
+            color="White"
+            restFieldType="product"/>
+</jcr:root>

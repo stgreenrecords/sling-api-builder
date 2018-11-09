@@ -14,8 +14,8 @@ public @interface RestField {
 
     String jcrPrimaryType() default "nt:unstructured";
 
-    String customPropertyName() default "";
+    String searchPropertyName() default "restFieldType";
 
-    String customPropertyValue() default "";
+    String searchPropertyValue() default "";
 
 }

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/content/api-builder-page"/>
-    <filter root="/content/api-builder-demo"/>
+    <filter root="/content/api-builder-demo-store"/>
     <filter root="/etc/clientlibs/api-builder"/>
-    <filter root="/content/api-builder-demo2"/>
     <filter root="/apps/api-builder/"/>
 </workspaceFilter>

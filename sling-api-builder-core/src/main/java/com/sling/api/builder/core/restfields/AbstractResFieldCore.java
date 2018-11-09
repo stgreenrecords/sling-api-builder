@@ -38,8 +38,8 @@ public abstract class AbstractResFieldCore implements RestFieldCore {
                                         componentContext.getServiceReference(),
                                         restField.pathToResources(),
                                         restField.jcrPrimaryType(),
-                                        restField.customPropertyName(),
-                                        restField.customPropertyValue(),
+                                        restField.searchPropertyName(),
+                                        restField.searchPropertyValue(),
                                         componentContext.getBundleContext()))
                 );
     }
@@ -83,8 +83,8 @@ public abstract class AbstractResFieldCore implements RestFieldCore {
         return String.format(DEFAULT_GET_QUERY,
                 servletProperties.getJcrPrimaryType(),
                 servletProperties.getPathToResources(),
-                servletProperties.getCustomPropertyName(),
-                servletProperties.getCustomPropertyValue());
+                servletProperties.getSearchPropertyName(),
+                servletProperties.getSearchPropertyValue());
     }
 
     public Object createOrUpdateModel(SlingHttpServletRequest request, Class modelClass) {
