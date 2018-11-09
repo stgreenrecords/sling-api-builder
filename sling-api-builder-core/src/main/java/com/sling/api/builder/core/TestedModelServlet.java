@@ -20,7 +20,7 @@ public class TestedModelServlet extends SlingAllMethodsServlet {
         ServletMappingStorage.getServletsStorage().forEach((key, value) -> {
             try {
                 String responseJson = RestResourceUtil.toJson(value.getModelClass().getConstructor().newInstance());
-                modelsObject.add("{\"className\":\"" + value.getModelClass().getSimpleName() + "\",\"fields\":" + responseJson + "}");
+                modelsObject.add("{\"className\":\"" + value.getModelClass().getSimpleName() + "\",\"extension\":\""+key+"\",\"fields\":" + responseJson + "}");
             } catch (Exception e) {
                 e.printStackTrace();
             }

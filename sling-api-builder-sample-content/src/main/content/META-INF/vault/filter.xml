@@ -3,5 +3,5 @@
     <filter root="/content/api-builder-page"/>
     <filter root="/content/api-builder-demo-store"/>
     <filter root="/etc/clientlibs/api-builder"/>
-    <filter root="/apps/api-builder/"/>
+    <filter root="/apps/api-builder"/>
 </workspaceFilter>
