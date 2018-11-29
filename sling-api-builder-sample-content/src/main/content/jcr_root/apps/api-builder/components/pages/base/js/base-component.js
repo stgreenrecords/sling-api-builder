@@ -12,6 +12,10 @@ var PORTAL = (function (PORTAL, $) {
     var inputsBlock = $self.find(".inputs-block");
     var currentQuery;
 
+    var drawForm = function(model, method){
+
+    }
+
     select.change(function(){
         var selectValue = $("#model-select :selected").text();
         if (selectValue != 'Choose model for testing.'){
@@ -19,7 +23,7 @@ var PORTAL = (function (PORTAL, $) {
                 if (model.className == selectValue){
                 var fields = model.fields;
                 inputsBlock.empty();
-                    var method = $("input[name='contact']:checked").val();
+                    var method = $("input[name='method']:checked").val();
                     if (method == "POST"){
                         for (var fieldName in fields){
                             inputsBlock.append('<input type="text"> ' + fieldName + '<Br>');
