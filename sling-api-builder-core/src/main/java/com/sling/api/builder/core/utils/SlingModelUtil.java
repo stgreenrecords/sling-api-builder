@@ -13,13 +13,11 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -110,7 +108,7 @@ public final class SlingModelUtil {
 
     private static Resource createResource(ResourceResolver resourceResolver, String path, String resourceType) {
         try {
-            return ResourceUtil.getOrCreateResource(resourceResolver, path, resourceType, null, true);
+            return ResourceUtil.getOrCreateResource(resourceResolver, path, "", resourceType, true);
         } catch (PersistenceException e) {
             LOG.error(e.getMessage(), e);
             return null;

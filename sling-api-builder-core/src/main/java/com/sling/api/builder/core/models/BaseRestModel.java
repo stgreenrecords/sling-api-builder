@@ -27,6 +27,7 @@ public class BaseRestModel {
     @ValueMapValue(name = RestResourceUtil.REQUEST_PARAMETER_RESOURCE_ID)
     private String id;
 
+    @ValueMapValue
     private String restFieldType;
 
     @PostConstruct
