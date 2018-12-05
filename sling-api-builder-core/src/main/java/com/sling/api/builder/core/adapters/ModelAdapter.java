@@ -1,7 +1,9 @@
 package com.sling.api.builder.core.adapters;
 
+import com.sling.api.builder.core.beans.ServletProperties;
 import com.sling.api.builder.core.utils.ReflectionUtil;
 import com.sling.api.builder.core.utils.RestResourceUtil;
+import com.sling.api.builder.core.utils.ServletMappingStorage;
 import com.sling.api.builder.core.utils.SlingModelUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.felix.scr.annotations.Activate;
@@ -89,13 +91,16 @@ public class ModelAdapter implements AdapterFactory {
         final String id = RestResourceUtil.getId(request);
         final String path = request.getParameter("path");
         Resource modelResource = null;
-        if (StringUtils.isNotEmpty(path)) {
-            modelResource = SlingModelUtil.createModelResource(request, path, aClass);
+        String pathToResource = Optional.ofNullable(ServletMappingStorage.getPropertiesFromRequest(request))
+                .map(ServletProperties::getPathToResources)
+                .filter(pathToResources -> StringUtils.isEmpty(path))
+                .orElse(path);
+        if ("POST".equals(request.getMethod())) {
+            modelResource = SlingModelUtil.createModelResource(request, pathToResource, aClass);
             updateNewResource(modelResource);
         } else if (StringUtils.isNotEmpty(id)) {
             modelResource = RestResourceUtil.getResourceByID(request.getResourceResolver()).apply(id);
         }
-
         return (AdapterType) Optional.ofNullable(modelResource)
                 .map(resource -> resource.adaptTo(aClass))
                 .map(model -> setPropertyToModel(request, model))
@@ -114,11 +119,10 @@ public class ModelAdapter implements AdapterFactory {
             return;
         }
         final String id = RestResourceUtil.generateId();
-        properties.put(RestResourceUtil.REQUEST_PARAMETER_WEDDING_RESOURCE_ID, id);
+        properties.put(RestResourceUtil.REQUEST_PARAMETER_RESOURCE_ID, id);
         try {
-            resourceNode.addMixin(RestResourceUtil.NT_WEDDING_RESOURCE_MIXIN);
             modelResource.getResourceResolver().commit();
-        } catch (RepositoryException | PersistenceException e) {
+        } catch (PersistenceException e) {
             LOG.error(e.getMessage(), e);
         }
     }

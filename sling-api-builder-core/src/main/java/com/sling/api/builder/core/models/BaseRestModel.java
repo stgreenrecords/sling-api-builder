@@ -1,12 +1,21 @@
 package com.sling.api.builder.core.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sling.api.builder.core.beans.ServletProperties;
 import com.sling.api.builder.core.utils.RestResourceUtil;
+import com.sling.api.builder.core.utils.ServletMappingStorage;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import javax.annotation.PostConstruct;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class BaseRestModel {
@@ -15,14 +24,21 @@ public class BaseRestModel {
     @JsonIgnore
     private Resource resource;
 
-    @ValueMapValue(name = RestResourceUtil.REQUEST_PARAMETER_WEDDING_RESOURCE_ID)
+    @ValueMapValue(name = RestResourceUtil.REQUEST_PARAMETER_RESOURCE_ID)
     private String id;
 
-    @ValueMapValue(name = "sling:resourceType")
-    private String resourceType;
+    private String restFieldType;
 
-    public String getResourcePath() {
-        return resource.getPath();
+    @PostConstruct
+    public void init() {
+        restFieldType = Optional.of(ServletMappingStorage.getServletsStorage())
+                .map(Map::entrySet)
+                .map(Collection::stream)
+                .orElse(Stream.empty())
+                .map(Map.Entry::getValue)
+                .filter(servletProperties -> servletProperties.getModelClass().equals(this.getClass()))
+                .map(ServletProperties::getSearchPropertyValue)
+                .findFirst().orElse(StringUtils.EMPTY);
     }
 
     public String getId() {
@@ -41,11 +57,11 @@ public class BaseRestModel {
         this.resource = resource;
     }
 
-    public String getResourceType() {
-        return resourceType;
+    public String getRestFieldType() {
+        return restFieldType;
     }
 
-    public void setResourceType(String resourceType) {
-        this.resourceType = resourceType;
+    public void setRestFieldType(String restFieldType) {
+        this.restFieldType = restFieldType;
     }
 }

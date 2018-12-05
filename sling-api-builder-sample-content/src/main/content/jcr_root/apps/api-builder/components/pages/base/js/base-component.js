@@ -45,8 +45,13 @@ var PORTAL = (function (PORTAL, $) {
         console.log('Component: "#main-content-block"');
 
                     $.ajax({
-                        type: 'GET',
-                        url: "/bin/models",
+                        type: 'POST',
+                        url: "/bin/rest.products/new.json",
+                        data:{
+                        firstName: "firstName",
+                        lastName: "lastName",
+                        customPath: "/somewhere"
+                        }
                         success: function (data) {
                         modelsStore = data;
 
