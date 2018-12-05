@@ -8,6 +8,7 @@ import org.apache.sling.commons.osgi.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.Map;
 
 @Component(
@@ -18,24 +19,25 @@ import java.util.Map;
 @Service(ResolverProvider.class)
 public final class ResolverProvider {
 
-    private static Logger LOG = LoggerFactory.getLogger(ResolverProvider.class);
-    private static ResourceResolver RESOLVER;
+    private static final Logger LOG = LoggerFactory.getLogger(ResolverProvider.class);
+    private static ResourceResolver resolver;
+
     @Property
-    private static String SERVICE = "provider.resolver.service";
+    private static final String SERVICE = "provider.resolver.SERVICE";
 
     @Reference
     private ResourceResolverFactory rrf;
 
     public static ResourceResolver getResolver() {
-        return RESOLVER;
+        return resolver;
     }
 
     @Activate
     @Modified
     public void init(Map<String, Object> properties) {
-        final String service = PropertiesUtil.toString(properties.get(SERVICE), StringUtils.EMPTY);
+        final String serviceUser = PropertiesUtil.toString(properties.get(SERVICE), StringUtils.EMPTY);
         try {
-            //   RESOLVER = rrf.getServiceResourceResolver(Collections.singletonMap(ResourceResolverFactory.SUBSERVICE, service));
+            resolver = rrf.getServiceResourceResolver(Collections.singletonMap(ResourceResolverFactory.SUBSERVICE, serviceUser));
         } catch (Exception e) {
             LOG.error(e.getMessage(), e);
         }
