@@ -19,11 +19,10 @@ import java.util.stream.StreamSupport;
 
 public final class RestResourceUtil {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RestResourceUtil.class);
-
     public static final String REQUEST_PARAMETER_RESOURCE_ID = "restFieldID";
     public static final String WEDDING_RESOURCE_TYPE_USER = "user";
     public static final String REQUEST_PARAMETER_ID = "id";
+    private static final Logger LOG = LoggerFactory.getLogger(RestResourceUtil.class);
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final String RESOURCE_BY_ID_QUERY = "SELECT * FROM [rest:resource] AS user WHERE user.[restFieldID] = '%s'";
     private static final String PART_USER_QUERY = "AND resource.[restFieldID] = '%s'";

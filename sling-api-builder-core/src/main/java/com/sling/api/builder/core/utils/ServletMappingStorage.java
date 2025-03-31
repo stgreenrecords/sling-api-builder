@@ -9,10 +9,10 @@ import java.util.Map;
 
 public class ServletMappingStorage {
 
+    private static final Map<String, ServletProperties> SERVLETS_STORAGE = new HashMap();
+
     private ServletMappingStorage() {
     }
-
-    private static final Map<String, ServletProperties> SERVLETS_STORAGE = new HashMap();
 
     public static Map<String, ServletProperties> getServletsStorage() {
         return SERVLETS_STORAGE;

@@ -20,11 +20,9 @@ import java.util.Map;
 public final class ResolverProvider {
 
     private static final Logger LOG = LoggerFactory.getLogger(ResolverProvider.class);
-    private static ResourceResolver resolver;
-
     @Property
     private static final String SERVICE = "provider.resolver.SERVICE";
-
+    private static ResourceResolver resolver;
     @Reference
     private ResourceResolverFactory rrf;
 

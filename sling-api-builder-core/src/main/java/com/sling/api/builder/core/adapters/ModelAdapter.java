@@ -25,7 +25,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
-import javax.jcr.RepositoryException;
 import java.io.IOException;
 import java.util.*;
 
@@ -44,16 +43,16 @@ public class ModelAdapter implements AdapterFactory {
 
     }
 
-    private BundleListener addBundleListener(ComponentContext componentContext){
+    private BundleListener addBundleListener(ComponentContext componentContext) {
         return bundleEvent -> {
             Bundle bundle = bundleEvent.getBundle();
             String modelPackage = (String) bundle.getHeaders().get("Sling-Model-Packages");
             if (StringUtils.isNotEmpty(modelPackage) && (
-                    bundleEvent.getType() == BundleEvent.INSTALLED  ||
-                    bundleEvent.getType() == BundleEvent.UPDATED  ||
-                    bundleEvent.getType() == BundleEvent.STARTED  ||
-                    bundleEvent.getType() == BundleEvent.RESOLVED)
-                    ){
+                    bundleEvent.getType() == BundleEvent.INSTALLED ||
+                            bundleEvent.getType() == BundleEvent.UPDATED ||
+                            bundleEvent.getType() == BundleEvent.STARTED ||
+                            bundleEvent.getType() == BundleEvent.RESOLVED)
+            ) {
                 String propertyAdaptables = "adaptables";
                 String propertyAdapters = "adapters";
                 try {

@@ -57,7 +57,7 @@ public class MainRestServlet extends SlingAllMethodsServlet {
         return Optional.ofNullable(ServletMappingStorage.getPropertiesFromRequest(request))
                 .map(properties -> {
                     BundleContext bundleContext = properties.getBundleContext();
-                    return  (RestFieldCore) bundleContext.getService(properties.getServiceClass());
+                    return (RestFieldCore) bundleContext.getService(properties.getServiceClass());
                 })
                 .orElse(null);
     }
